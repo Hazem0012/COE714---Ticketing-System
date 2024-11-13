@@ -3,8 +3,8 @@ const cors = require('cors');
 const dbOperations = require('./dbOperations');
 
 const app = express();
-app.use(cors());           // Enable Cross-Origin Resource Sharing
-app.use(express.json());    // Parse JSON bodies
+app.use(cors());        
+app.use(express.json());   
 
 // --------- User Routes ---------
 
