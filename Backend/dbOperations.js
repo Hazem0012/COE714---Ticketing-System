@@ -60,7 +60,7 @@ function addMessage(ticketId, senderId, messageDescription, callback) {
     });
 }
 
-// Function to get all messages for a ticket (for viewing live chat history)
+// Function to get all messages for a ticket (to view live chat history)
 function getMessagesForTicket(ticketId, callback) {
     const query = 'SELECT * FROM Messages WHERE ticket_id = ? ORDER BY created_at ASC';
     db.query(query, [ticketId], (err, results) => {
