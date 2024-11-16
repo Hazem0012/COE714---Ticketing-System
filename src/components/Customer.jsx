@@ -5,11 +5,11 @@ function Customer() {
   const navigate = useNavigate();
 
   const navigateCreateTicket = () => {
-    navigate("/CreateTicket");
+    navigate("/user/CreateTicket");
   };
 
   const navigateSubmittedTicket = () => {
-    navigate("/SubmittedTickets");
+    navigate("/user/SubmittedTickets");
   };
 
   return (
