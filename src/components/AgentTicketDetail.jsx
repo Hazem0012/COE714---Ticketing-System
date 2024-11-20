@@ -3,7 +3,8 @@ import { useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
 
 const socket = io("wss://ticket-system-backend-hsoh.onrender.com");
-export default function UserTicketDetail() {
+
+export default function AgentTicketDetail() {
   const location = useLocation();
   const { agent_id, ticket_id, user_id } = location.state;
   const [messages, setMessages] = useState([]);
@@ -33,7 +34,7 @@ export default function UserTicketDetail() {
           body: JSON.stringify({ ticketID: ticket_id }), //send our user data as POST
         }
       )
-        .then((res) => res.json()) // get scraped data as GET
+        .then((res) => res.json()) //get scraped data as GET
         .then((data) => {
           setMessages(data["result"]);
         });
@@ -48,7 +49,7 @@ export default function UserTicketDetail() {
       ticketID: ticket_id,
       userID: user_id,
       agentID: agent_id,
-      creator: "user",
+      creator: "agent",
       message: message,
     };
     socket.emit("send_message", messageData);
@@ -57,12 +58,12 @@ export default function UserTicketDetail() {
 
   return (
     <div>
-      <h1>User</h1>
+      <h1>Agent</h1>
       <div>
         {messages?.map((msg, index) => (
           <div key={index}>
             <p>
-              <strong>{msg.creator === "user" ? "You" : "Them"}:</strong>{" "}
+              <strong>{msg.creator === "agent" ? "You" : "Them"}:</strong>{" "}
               {msg.message}
             </p>
           </div>

@@ -4,6 +4,7 @@ import Customer from "./components/Customer";
 import NavBar from "./components/NavBar";
 import AgentHome from "./components/AgentHome";
 import UserTicketDetail from "./components/UserTicketDetail";
+import AgentTicketDetail from "./components/AgentTicketDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SubmittedTickets from "./components/SubmittedTickets";
 
@@ -21,7 +22,7 @@ function App() {
             element={<UserTicketDetail />}
           />
           <Route exact path="/agent" element={<AgentHome />} />
-          <Route path="/agent/ticket-detail" element={<UserTicketDetail />} />
+          <Route path="/agent/ticket-detail" element={<AgentTicketDetail />} />
         </Routes>
       </Router>
     </div>
