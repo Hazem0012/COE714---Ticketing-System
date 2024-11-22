@@ -78,16 +78,13 @@ const homeSlice = createSlice({
 export const submitNewTicket = createAsyncThunk(
   "submitNewTicket",
   async (data) => {
-    return await fetch(
-      "https://ticket-system-backend-hsoh.onrender.com/createTicket",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    return await fetch("/createTicket", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         // handle success (200-209) and custom server error 406
         if ((res.status >= 200 && res.status <= 299) || res.status === 406) {
@@ -108,16 +105,13 @@ export const submitNewTicket = createAsyncThunk(
 export const getUserAllTickets = createAsyncThunk(
   "getUserAllTickets",
   async (data) => {
-    return await fetch(
-      "https://ticket-system-backend-hsoh.onrender.com/getUserAllTickets",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    return await fetch("/getUserAllTickets", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         // handle success (200-209) and custom server error 406
         if ((res.status >= 200 && res.status <= 299) || res.status === 406) {
@@ -138,16 +132,13 @@ export const getUserAllTickets = createAsyncThunk(
 export const getAgentAllTickets = createAsyncThunk(
   "getAgentAllTickets",
   async (data) => {
-    return await fetch(
-      "https://ticket-system-backend-hsoh.onrender.com/getAgentAllTickets",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    return await fetch("/getAgentAllTickets", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         // handle success (200-209) and custom server error 406
         if ((res.status >= 200 && res.status <= 299) || res.status === 406) {

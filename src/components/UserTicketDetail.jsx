@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { io } from "socket.io-client";
+import Button from "@mui/material/Button";
 
-const socket = io("wss://ticket-system-backend-hsoh.onrender.com");
+import "./chat.css";
+
+const socket = io("http://localhost:5000");
+
 export default function UserTicketDetail() {
   const location = useLocation();
   const { agent_id, ticket_id, user_id } = location.state;
@@ -56,24 +60,26 @@ export default function UserTicketDetail() {
   };
 
   return (
-    <div>
+    <div className="chat-container">
       <h1>User</h1>
-      <div>
+      <div className="chat-messages">
         {messages?.map((msg, index) => (
-          <div key={index}>
+          <div key={index} className={msg.creator === "user" ? "you" : "them"}>
             <p>
-              <strong>{msg.creator === "user" ? "You" : "Them"}:</strong>{" "}
+              {/* <strong>{msg.creator === "user" ? "You" : "Them"}:</strong>{" "} */}
               {msg.message}
             </p>
           </div>
         ))}
       </div>
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
+      <div className="chat-input">
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <Button onClick={sendMessage}>Send</Button>
+      </div>
     </div>
   );
 }
